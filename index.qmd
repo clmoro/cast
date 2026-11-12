@@ -107,8 +107,7 @@ $\varepsilon_M\le N e^{-2M(v_{\min}-v_{\rm lo})^2}+e^{-2M(v_{\rm hi}-v_{\min})^2
 
 ## Results
 
-Frozen policies, $N=8$ samples, paired scenarios; brackets are paired bootstrap 95 % intervals. The main studies were
-preregistered.
+Frozen policies, $N=8$ samples, paired scenarios; brackets are paired bootstrap 95 % intervals.
 
 ### Manipulation: robomimic Can under five requests
 
