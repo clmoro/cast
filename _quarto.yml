@@ -1,0 +1,22 @@
+project:
+  type: website
+  output-dir: docs
+  resources:
+    - media/cast_video.mp4
+    - media/poster.jpg
+
+website:
+  title: "CAST"
+  page-navigation: false
+  navbar: false
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    toc-location: right
+    toc-title: "On this page"
+    html-math-method: katex
+    page-layout: article
+    smooth-scroll: true

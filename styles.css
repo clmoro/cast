@@ -1,0 +1,15 @@
+:root { --cast-blue: #2f7fd8; --cast-navy: #1b2f5e; }
+body { font-size: 1.04rem; }
+h2 { color: var(--cast-navy); margin-top: 2.4rem; border-bottom: 2px solid #e6e6e6; padding-bottom: .3rem; }
+h3 { color: var(--cast-blue); }
+.authors { text-align: center; font-size: 1.1rem; margin-bottom: .2rem; }
+.affil { text-align: center; color: #5f5e59; margin-bottom: 1.2rem; }
+.venue { text-align: center; font-weight: 600; color: var(--cast-navy); margin-bottom: 1.4rem; }
+.video-wrap { margin: 1rem 0 1.6rem 0; }
+.video-wrap video { width: 100%; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,.12); }
+.question { border-left: 5px solid var(--cast-navy); background: #f5f7fb; padding: .9rem 1.1rem; margin: 1.2rem 0; font-size: 1.12rem; }
+.answer { border-left: 5px solid var(--cast-blue); background: #f4f9ff; padding: .9rem 1.1rem; margin: 1.2rem 0; font-size: 1.12rem; font-weight: 600; }
+.result-card { border: 1px solid #e3e3e3; border-radius: 8px; padding: .8rem 1rem; margin: .8rem 0; }
+.result-card b { color: var(--cast-navy); }
+table { font-size: .95rem; }
+.cast-best { font-weight: 700; }
