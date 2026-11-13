@@ -179,7 +179,7 @@ window.Quarto = {
   <li><a href="#manipulation-robomimic-can-under-five-requests" id="toc-manipulation-robomimic-can-under-five-requests" class="nav-link" data-scroll-target="#manipulation-robomimic-can-under-five-requests">Manipulation: robomimic Can under five requests</a></li>
   <li><a href="#new-requests-frozen-models" id="toc-new-requests-frozen-models" class="nav-link" data-scroll-target="#new-requests-frozen-models">New requests, frozen models</a></li>
   <li><a href="#when-does-selection-help-the-three-levers" id="toc-when-does-selection-help-the-three-levers" class="nav-link" data-scroll-target="#when-does-selection-help-the-three-levers">When does selection help? The three levers</a></li>
-  <li><a href="#blocked-routes-dynamic-systems-and-viability-from-logs" id="toc-blocked-routes-dynamic-systems-and-viability-from-logs" class="nav-link" data-scroll-target="#blocked-routes-dynamic-systems-and-viability-from-logs">Blocked routes, dynamic systems, and viability from logs</a></li>
+  <li><a href="#blocked-routes-dynamic-systems-and-learned-viability-cast-vl" id="toc-blocked-routes-dynamic-systems-and-learned-viability-cast-vl" class="nav-link" data-scroll-target="#blocked-routes-dynamic-systems-and-learned-viability-cast-vl">Blocked routes, dynamic systems, and learned viability (CAST-VL)</a></li>
   </ul></li>
   <li><a href="#citation" id="toc-citation" class="nav-link" data-scroll-target="#citation">Citation</a></li>
   </ul>
@@ -251,7 +251,7 @@ window.Quarto = {
 </section>
 <section id="cast-v-keep-the-policy-able-to-act" class="level3">
 <h3 class="anchored" data-anchor-id="cast-v-keep-the-policy-able-to-act">CAST-V: keep the policy able to act</h3>
-<p>A certified chunk can lead to a state from which the frozen policy rarely samples a certified continuation, for example in front of a zone that blocks the route it has started. CAST-V scores each certified candidate by its <strong>policy-conditioned viability</strong>: the fraction of <span class="math inline">M</span> continuations of the critic-free certified controller, run for <span class="math inline">L</span> decisions from the candidate’s end state, that keep finding a certified sample. It keeps the candidates with <span class="math inline">v \ge v_{\min}=0.5</span> and lets the critic choose among them. Viability can be <strong>estimated with a model</strong>, with a finite-sample guarantee, or <strong>learned from the controller’s own logs</strong>, with no model-based lookahead at deployment.</p>
+<p>A certified chunk can lead to a state from which the frozen policy rarely samples a certified continuation, for example in front of a zone that blocks the route it has started. CAST-V scores each certified candidate by its <strong>policy-conditioned viability</strong>: the fraction of <span class="math inline">M</span> continuations of the critic-free certified controller, run for <span class="math inline">L</span> decisions from the candidate’s end state, that keep finding a certified sample. It keeps the candidates with <span class="math inline">v \ge v_{\min}=0.5</span> and lets the critic choose among them. Viability can be <strong>estimated with a model</strong>, with a finite-sample guarantee, or <strong>learned from the controller’s own logs</strong> (CAST-VL, CAST with Learned Viability), with no model-based lookahead at deployment.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/fig_viability.png" class="img-fluid figure-img"></p>
@@ -410,13 +410,13 @@ window.Quarto = {
 </figure>
 </div>
 </section>
-<section id="blocked-routes-dynamic-systems-and-viability-from-logs" class="level3">
-<h3 class="anchored" data-anchor-id="blocked-routes-dynamic-systems-and-viability-from-logs">Blocked routes, dynamic systems, and viability from logs</h3>
+<section id="blocked-routes-dynamic-systems-and-learned-viability-cast-vl" class="level3">
+<h3 class="anchored" data-anchor-id="blocked-routes-dynamic-systems-and-learned-viability-cast-vl">Blocked routes, dynamic systems, and learned viability (CAST-VL)</h3>
 <div class="result-card">
 <p><strong>Unicycle, unseen keep-out zones</strong> (3 policies × 500 scenarios): CAST <strong>0.81</strong> → CAST-V <strong>0.99</strong>, with the task critic and no retraining; more samples do not replace the lookahead (CAST with <span class="math inline">N=1024</span>: 0.14).</p>
 </div>
 <div class="result-card">
-<p><strong>Viability learned from logs, no model-based lookahead at deployment:</strong> <strong>0.95</strong> on the unicycle (+0.14 over CAST), within 0.03 of the model under 15–30 % actuator error; on certified candidates it never saw executed, it ranks the simulated viability with <strong>AUC 0.98</strong>. On the quadrotor it reaches <strong>0.98</strong>, above model-based CAST-V (0.93) and MPPI with the exact model (0.61).</p>
+<p><strong>CAST-VL, viability learned from logs, no model-based lookahead at deployment:</strong> <strong>0.95</strong> on the unicycle (+0.14 over CAST), within 0.03 of the model under 15–30 % actuator error; on certified candidates it never saw executed, it ranks the simulated viability with <strong>AUC 0.98</strong>. On the quadrotor it reaches <strong>0.98</strong>, above model-based CAST-V (0.93) and MPPI with the exact model (0.61). With a crossing pedestrian, CAST-VL reaches <strong>0.95</strong> (MPPI 0.83, model-based CAST-V 0.82).</p>
 </div>
 <div class="result-card">
 <p><strong>Quadrotor and humanoid:</strong> the filter keeps a no-fly zone but crashes the vehicle (0.44); CAST 0.68, CAST-V <strong>0.93</strong>. Under a humanoid effort budget, the filter’s scaled torques make it fall; CAST gains <strong>+0.53</strong> over the filter and CAST-V a further +0.09.</p>

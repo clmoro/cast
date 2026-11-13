@@ -63,7 +63,7 @@ front of a zone that blocks the route it has started. CAST-V scores each certifi
 viability**: the fraction of $M$ continuations of the critic-free certified controller, run for $L$ decisions from the
 candidate's end state, that keep finding a certified sample. It keeps the candidates with $v \ge v_{\min}=0.5$ and lets the
 critic choose among them. Viability can be **estimated with a model**, with a finite-sample guarantee, or **learned from the
-controller's own logs**, with no model-based lookahead at deployment.
+controller's own logs** (CAST-VL, CAST with Learned Viability), with no model-based lookahead at deployment.
 
 ![**Safe set, availability and viability** (unicycle, quadrotor, humanoid). States inside the safe set and with certified samples available can still be dead ends for the frozen policy; CAST-V avoids them.](figures/fig_viability.png){fig-align="center"}
 
@@ -151,7 +151,7 @@ ranking decides (**0.53** against **0.16** for select-then-filter at $b=0.15$); 
 
 ![](figures/fig_regime.png){fig-align="center"}
 
-### Blocked routes, dynamic systems, and viability from logs
+### Blocked routes, dynamic systems, and learned viability (CAST-VL)
 
 ::: {.result-card}
 **Unicycle, unseen keep-out zones** (3 policies × 500 scenarios): CAST **0.81** → CAST-V **0.99**, with the task critic and no
@@ -159,9 +159,9 @@ retraining; more samples do not replace the lookahead (CAST with $N=1024$: 0.14)
 :::
 
 ::: {.result-card}
-**Viability learned from logs, no model-based lookahead at deployment:** **0.95** on the unicycle (+0.14 over CAST), within 0.03
+**CAST-VL, viability learned from logs, no model-based lookahead at deployment:** **0.95** on the unicycle (+0.14 over CAST), within 0.03
 of the model under 15–30 % actuator error; on certified candidates it never saw executed, it ranks the simulated viability with
-**AUC 0.98**. On the quadrotor it reaches **0.98**, above model-based CAST-V (0.93) and MPPI with the exact model (0.61).
+**AUC 0.98**. On the quadrotor it reaches **0.98**, above model-based CAST-V (0.93) and MPPI with the exact model (0.61). With a crossing pedestrian, CAST-VL reaches **0.95** (MPPI 0.83, model-based CAST-V 0.82).
 :::
 
 ::: {.result-card}
