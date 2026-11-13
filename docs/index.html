@@ -180,6 +180,7 @@ window.Quarto = {
   <li><a href="#new-requests-frozen-models" id="toc-new-requests-frozen-models" class="nav-link" data-scroll-target="#new-requests-frozen-models">New requests, frozen models</a></li>
   <li><a href="#when-does-selection-help-the-three-levers" id="toc-when-does-selection-help-the-three-levers" class="nav-link" data-scroll-target="#when-does-selection-help-the-three-levers">When does selection help? The three levers</a></li>
   <li><a href="#blocked-routes-dynamic-systems-and-learned-viability-cast-vl" id="toc-blocked-routes-dynamic-systems-and-learned-viability-cast-vl" class="nav-link" data-scroll-target="#blocked-routes-dynamic-systems-and-learned-viability-cast-vl">Blocked routes, dynamic systems, and learned viability (CAST-VL)</a></li>
+  <li><a href="#two-diagnostics-learning-target-and-safety" id="toc-two-diagnostics-learning-target-and-safety" class="nav-link" data-scroll-target="#two-diagnostics-learning-target-and-safety">Two diagnostics: learning target and safety</a></li>
   </ul></li>
   <li><a href="#citation" id="toc-citation" class="nav-link" data-scroll-target="#citation">Citation</a></li>
   </ul>
@@ -419,7 +420,7 @@ window.Quarto = {
 <section id="blocked-routes-dynamic-systems-and-learned-viability-cast-vl" class="level3">
 <h3 class="anchored" data-anchor-id="blocked-routes-dynamic-systems-and-learned-viability-cast-vl">Blocked routes, dynamic systems, and learned viability (CAST-VL)</h3>
 <div class="result-card">
-<p><strong>Unicycle, unseen keep-out zones</strong> (3 policies × 500 scenarios): CAST <strong>0.81</strong> → CAST-V <strong>0.99</strong>, with the task critic and no retraining; more samples do not replace the lookahead (CAST with <span class="math inline">N=1024</span>: 0.14).</p>
+<p><strong>Unicycle, unseen keep-out zones</strong> (3 policies × 500 scenarios): CAST <strong>0.81</strong> → CAST-V <strong>0.99</strong>, with the task critic and no retraining; more samples do not replace the lookahead (CAST with <span class="math inline">N=1024</span>: 0.14), and a predictive safety filter with a 20-step horizon stalls too (joint 0.75).</p>
 </div>
 <div class="result-card">
 <p><strong>CAST-VL, viability learned from logs, no model-based lookahead at deployment:</strong> <strong>0.95</strong> on the unicycle (+0.14 over CAST), within 0.03 of the model under 15–30 % actuator error; on certified candidates it never saw executed, it ranks the simulated viability with <strong>AUC 0.98</strong>. On the quadrotor it reaches <strong>0.98</strong>, above model-based CAST-V (0.93) and MPPI with the exact model (0.61). With a crossing pedestrian, CAST-VL reaches <strong>0.95</strong> (MPPI 0.83, model-based CAST-V 0.82).</p>
@@ -430,6 +431,20 @@ window.Quarto = {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/fig_quad.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="two-diagnostics-learning-target-and-safety" class="level3">
+<h3 class="anchored" data-anchor-id="two-diagnostics-learning-target-and-safety">Two diagnostics: learning target and safety</h3>
+<div class="result-card">
+<p><strong>Viability or success as the learning target?</strong> Trained on the same logged episodes with the same network, viability needs fewer logs: with 100 episodes it keeps <strong>0.89</strong> against <strong>0.76</strong> for a success critic; with 300 the two are level, and with 1000 or more the success critic is slightly ahead.</p>
+</div>
+<div class="result-card">
+<p><strong>Where violations come from, and a certified backup.</strong> With a learned predictor on Square, every violating episode executed a fallback chunk that failed the certificate; the episodes whose chunks were all certified had none. With a crossing pedestrian, executing the last certified chunk’s braking backup instead of an uncertified correction leaves no contact during any certified step (passive safety: remaining contacts occur with the robot at rest), and CAST rises from <strong>0.60</strong> to <strong>0.81</strong> as crashes more than halve.</p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/fig_diag.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 </section>

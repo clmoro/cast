@@ -157,7 +157,8 @@ ranking decides (**0.53** against **0.16** for select-then-filter at $b=0.15$); 
 
 ::: {.result-card}
 **Unicycle, unseen keep-out zones** (3 policies × 500 scenarios): CAST **0.81** → CAST-V **0.99**, with the task critic and no
-retraining; more samples do not replace the lookahead (CAST with $N=1024$: 0.14).
+retraining; more samples do not replace the lookahead (CAST with $N=1024$: 0.14), and a predictive safety filter with a 20-step
+horizon stalls too (joint 0.75).
 :::
 
 ::: {.result-card}
@@ -172,6 +173,23 @@ humanoid effort budget, the filter's scaled torques make it fall; CAST gains **+
 :::
 
 ![](figures/fig_quad.png){fig-align="center"}
+
+### Two diagnostics: learning target and safety
+
+::: {.result-card}
+**Viability or success as the learning target?** Trained on the same logged episodes with the same network, viability needs fewer
+logs: with 100 episodes it keeps **0.89** against **0.76** for a success critic; with 300 the two are level, and with 1000 or more the
+success critic is slightly ahead.
+:::
+
+::: {.result-card}
+**Where violations come from, and a certified backup.** With a learned predictor on Square, every violating episode executed a
+fallback chunk that failed the certificate; the episodes whose chunks were all certified had none. With a crossing pedestrian,
+executing the last certified chunk's braking backup instead of an uncertified correction leaves no contact during any certified
+step (passive safety: remaining contacts occur with the robot at rest), and CAST rises from **0.60** to **0.81** as crashes more than halve.
+:::
+
+![](figures/fig_diag.png){fig-align="center"}
 
 ## Citation
 
