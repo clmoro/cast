@@ -93,19 +93,19 @@ into three levers: the **availability** of certified samples, the **spread** of 
 
 *Ranking helps only when certified samples exist, differ in value, and the critic can tell them apart.*
 
-**Proposition 4 (Generative viability).** Suppose $s_0\in\mathcal K$ and $\beta_{\mathcal K}(s)\ge\beta_{\min}>0$ on
+**Proposition 6 (Generative viability; appendix).** Suppose $s_0\in\mathcal K$ and $\beta_{\mathcal K}(s)\ge\beta_{\min}>0$ on
 $\mathcal K$. If a controller executes, whenever its batch contains one, a certified sample that leads into $\mathcal K$, then
-the probability that some batch among the first $H$ decisions contains none is at most $H(1-\beta_{\min})^N$; otherwise every
+the probability that some batch among the first $\ell$ decisions contains none is at most $\ell(1-\beta_{\min})^N$; otherwise every
 executed chunk is certified and the state stays in $\mathcal K$.
 
 *$\mathcal K$ is a generative analogue of a viability kernel: it depends on the frozen policy, not only on the dynamics.*
 
-**Proposition 5 (Finite-sampling generative control authority).** Call a controller *selection-only* with budget $N$ if at
-each decision it executes a certified one of $N$ fresh samples of $\pi(\cdot\mid s)$, failing if none is. Let $W_{0,N}\equiv1$ and
-$$W_{t,N}(s)=\mathbb E_{a_{1:N}\sim\pi(\cdot\mid s)}\Big[\max_{i:\,a_i\in\mathcal F(s)}W_{t-1,N}\big(f(s,a_i)\big)\Big],\qquad \max\emptyset=0 .$$
-(i) $W_{t,N}(s)$ is the largest probability, over all selection-only controllers with budget $N$, that each of the first $t$
-batches contains a certified sample; acting greedily on $W$ attains it. (ii) $W_{t,N}$ is nondecreasing in $N$, and $W_{t,1}$ is
-the probability that the policy's own samples stay certified. (iii) As $N\to\infty$, $W_{t,N}$ converges to viability up to
+**Proposition 4 (Finite-sampling generative control authority).** Call a controller *selection-only* with $N$ samples if at
+each decision it executes a certified one of $N$ fresh samples of $\pi(\cdot\mid s)$, failing if none is. Define the *safe control authority* $W_{0,N}\equiv1$ and
+$$W_{\ell,N}(s)=\mathbb E_{a_{0:N-1}\sim\pi(\cdot\mid s)}\Big[\max_{i:\,a_i\in\mathcal F(s)}W_{\ell-1,N}\big(f(s,a_i)\big)\Big],\qquad \max\emptyset=0 .$$
+(i) $W_{\ell,N}(s)$ is the largest probability, over all selection-only controllers with $N$ samples, that each of the first $\ell$
+batches contains a certified sample or a goal state is reached first; acting greedily on $W$ attains it. (ii) $W_{\ell,N}$ is nondecreasing in $N$, and $W_{\ell,1}$ is
+the probability that the policy's own samples stay certified. (iii) As $N\to\infty$, $W_{\ell,N}$ converges to viability up to
 $\pi$-null sets of chunks: at most classical (certified) viability, and $0$ wherever the viable certified chunks have zero
 probability under the policy.
 
@@ -139,8 +139,8 @@ Joint task-and-request success, 200 paired episodes each (last column: largest v
 ### New requests, frozen models
 
 On requests fixed in advance and evaluated once, CAST gains **+0.32 [+0.26, +0.39]** over the filter on six new Can geometries
-and **+0.09 [+0.05, +0.13]** on Square (positive for each of three policies); across ten settings it beats output filters and
-critic-free selection in nine.
+and **+0.09 [+0.05, +0.13]** on Square (positive for each of three policies); across ten settings it beats the output filter in nine (the tenth, a crossing
+pedestrian, is a tie).
 
 ![](figures/fig_headline.png){fig-align="center"}
 
