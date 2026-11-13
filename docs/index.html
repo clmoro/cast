@@ -235,7 +235,7 @@ window.Quarto = {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/fig_concept.png" class="img-fluid figure-img"></p>
-<figcaption><strong>Edit or select.</strong> A keep-out zone, unseen in training, blocks one of the two routes of a frozen unicycle policy. A safety filter keeps the robot safe but stalls at the zone; selecting among the policy’s own certified samples keeps the task.</figcaption>
+<figcaption><strong>Edit or select.</strong> A keep-out zone, unseen in training, blocks one of the two routes of a frozen unicycle policy. (a) A safety filter keeps the robot safe but stalls at the zone. (b) CAST-V selects among the policy’s own certified samples using simulated viability. (c) CAST-VL does the same with viability learned from logs, without model rollouts. (d) Joint success on 500 unseen zones per policy.</figcaption>
 </figure>
 </div>
 <section id="cast-certify-then-select" class="level3">
@@ -256,6 +256,12 @@ window.Quarto = {
 <figure class="figure">
 <p><img src="figures/fig_viability.png" class="img-fluid figure-img"></p>
 <figcaption><strong>Safe set, availability and viability</strong> (unicycle, quadrotor, humanoid). States inside the safe set and with certified samples available can still be dead ends for the frozen policy; CAST-V avoids them.</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/fig_boundary.png" class="img-fluid figure-img"></p>
+<figcaption><strong>The boundary a frozen policy needs, simulated and learned.</strong> Four keep-out zones the learned network never saw. The CBF boundary (red ring) is what a filter protects; the policy’s viability boundary lies far outside it and moves with the zone. Top: by simulation (CAST-V). Bottom: learned from logs (CAST-VL), which agrees with the simulation on 72–90 % of certified chunks and reaches the goal in 37–39 of 40 rollouts.</figcaption>
 </figure>
 </div>
 </section>

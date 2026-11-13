@@ -41,7 +41,7 @@ distribution of plausible chunks. At run time the robot meets a constraint its d
 person reaching across the table, a keep-out volume, a limit on motor effort. A safety filter edits the policy's action to satisfy
 it; the edit ignores the task, and a large edit can leave the policy where it cannot continue.
 
-![**Edit or select.** A keep-out zone, unseen in training, blocks one of the two routes of a frozen unicycle policy. A safety filter keeps the robot safe but stalls at the zone; selecting among the policy's own certified samples keeps the task.](figures/fig_concept.png){fig-align="center"}
+![**Edit or select.** A keep-out zone, unseen in training, blocks one of the two routes of a frozen unicycle policy. (a) A safety filter keeps the robot safe but stalls at the zone. (b) CAST-V selects among the policy's own certified samples using simulated viability. (c) CAST-VL does the same with viability learned from logs, without model rollouts. (d) Joint success on 500 unseen zones per policy.](figures/fig_concept.png){fig-align="center"}
 
 ### CAST: certify, then select
 
@@ -66,6 +66,8 @@ critic choose among them. Viability can be **estimated with a model**, with a fi
 controller's own logs** (CAST-VL, CAST with Learned Viability), with no model-based lookahead at deployment.
 
 ![**Safe set, availability and viability** (unicycle, quadrotor, humanoid). States inside the safe set and with certified samples available can still be dead ends for the frozen policy; CAST-V avoids them.](figures/fig_viability.png){fig-align="center"}
+
+![**The boundary a frozen policy needs, simulated and learned.** Four keep-out zones the learned network never saw. The CBF boundary (red ring) is what a filter protects; the policy's viability boundary lies far outside it and moves with the zone. Top: by simulation (CAST-V). Bottom: learned from logs (CAST-VL), which agrees with the simulation on 72–90 % of certified chunks and reaches the goal in 37–39 of 40 rollouts.](figures/fig_boundary.png){fig-align="center"}
 
 ## Theoretical results
 
