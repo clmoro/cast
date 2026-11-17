@@ -12,7 +12,7 @@ SUPSI-IDSIA, USI, Lugano, Switzerland · Politecnico di Milano, Milan, Italy
 :::
 
 ::: {.venue}
-L4DC 2027
+Under review
 :::
 
 ```{=html}
@@ -195,10 +195,10 @@ step (passive safety: remaining contacts occur with the robot at rest), and CAST
 ## Citation
 
 ```bibtex
-@inproceedings{moroncelli2027cast,
-  title     = {Certify, Then Select: Viability-Aware Runtime Steering of Frozen Diffusion Policies},
-  author    = {Moroncelli, Angelo and Roveda, Loris},
-  booktitle = {Learning for Dynamics and Control (L4DC)},
-  year      = {2027}
+@misc{moroncelli2026cast,
+  title  = {Certify, Then Select: Viability-Aware Runtime Steering of Frozen Diffusion Policies},
+  author = {Moroncelli, Angelo and Roveda, Loris},
+  note   = {Under review},
+  year   = {2026}
 }
 ```

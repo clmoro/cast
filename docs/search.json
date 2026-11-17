@@ -32,6 +32,6 @@
     "href": "index.html#citation",
     "title": "Certify, Then Select",
     "section": "Citation",
-    "text": "Citation\n@inproceedings{moroncelli2027cast,\n  title     = {Certify, Then Select: Viability-Aware Runtime Steering of Frozen Diffusion Policies},\n  author    = {Moroncelli, Angelo and Roveda, Loris},\n  booktitle = {Learning for Dynamics and Control (L4DC)},\n  year      = {2027}\n}"
+    "text": "Citation\n@misc{moroncelli2026cast,\n  title  = {Certify, Then Select: Viability-Aware Runtime Steering of Frozen Diffusion Policies},\n  author = {Moroncelli, Angelo and Roveda, Loris},\n  note   = {Under review},\n  year   = {2026}\n}"
   }
 ]
