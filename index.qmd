@@ -113,8 +113,9 @@ probability under the policy.
 
 *The physical capacity to act safely and a frozen policy's capacity to sample safe actions differ, and finite sampling makes
 the difference decisive. CAST-V's viability estimate is a conservative lower bound on $W$ (with a finite-sample guarantee in
-the paper's appendix). The recursion over random action sets follows Boutilier et al. (2018) and EMaQ (Ghasemipour et al., 2021);
-new is its reading as the safe control authority of a frozen generative policy.*
+the paper's appendix). The Bellman-style recursion follows established planning over random action sets (Boutilier et al., 2018;
+Ghasemipour et al., 2021); our contribution is its interpretation as the finite-sampling safe control authority of a frozen
+generative policy.*
 
 ## Results
 
